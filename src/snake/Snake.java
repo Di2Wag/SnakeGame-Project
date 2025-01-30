@@ -10,9 +10,9 @@ private Picture snakePicture;
 private Field field;
 
 
-    public Snake(Picture pikaPicture){
-        this.snakePicture = pikaPicture;
-        pikaPicture.draw();
+    public Snake(Picture snakePicture){
+        this.snakePicture = snakePicture;
+        snakePicture.draw();
     }
 
     public void moveRight(){

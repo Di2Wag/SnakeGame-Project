@@ -1,15 +1,21 @@
+import com.codeforall.online.simplegraphics.pictures.Picture;
 import field.Field;
+import snake.Snake;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+
     public static void main(String[] args) {
 
-     Field field;
+        Game game;
+        game = new Game();
+        Picture picture = new Picture(0,0, "resources/Apple.png");
 
-    field = new Field(70,50);
+        game.setSnakePicture(picture);
 
-    field.init();
+        game.gameInit();
+
 
     }
 
