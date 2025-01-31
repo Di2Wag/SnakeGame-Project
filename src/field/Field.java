@@ -25,7 +25,7 @@ public class Field {
         field.draw();
 
         //background
-        Picture background = new Picture(PADDING,PADDING, "resources/Grass 1050x750.png");
+        Picture background = new Picture(PADDING,PADDING, "resources/Dirt 1050x750(1).png");
         Canvas.getInstance().show(background);
 
     }

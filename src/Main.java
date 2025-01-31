@@ -1,5 +1,7 @@
 import com.codeforall.online.simplegraphics.pictures.Picture;
 import field.Field;
+import fruits.Fruit;
+import game.Game;
 import input.MyKeyboard;
 import snake.Snake;
 
@@ -17,13 +19,20 @@ public class Main {
 
 
         MyKeyboard keyboard = new MyKeyboard();
-        keyboard.setSnake(new Snake(field));
+        Snake snake = new Snake(field);
+        keyboard.setSnake(snake);
         keyboard.init();
 
+        Fruit fruit =new Fruit(field);
+
+        Game game =new Game(field, snake, fruit);
+        keyboard.setGame(game);
 
 
-        /*Game game;
-        game = new Game();
+
+
+        /*game.Game game;
+        game = new game.Game();
         Picture picture = new Picture(10,10, "resources/Grass 1050x750.png");
         picture.draw();
 

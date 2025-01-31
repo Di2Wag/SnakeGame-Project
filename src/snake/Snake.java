@@ -31,6 +31,7 @@ public class Snake {
             col++;
             snakePicture.translate(cellSize, 0);
         }
+
     }
 
     public void moveLeft(){
@@ -56,7 +57,21 @@ public class Snake {
         }
     }
 
+    public int getCol() {
+        return col;
+    }
 
+    public void setCol(int col) {
+        this.col = col;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
 }
 
 

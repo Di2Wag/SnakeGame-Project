@@ -4,13 +4,16 @@ import com.codeforall.online.simplegraphics.keyboard.Keyboard;
 import com.codeforall.online.simplegraphics.keyboard.KeyboardEvent;
 import com.codeforall.online.simplegraphics.keyboard.KeyboardEventType;
 import com.codeforall.online.simplegraphics.keyboard.KeyboardHandler;
-import com.codeforall.online.simplegraphics.pictures.Picture;
+import game.Game;
 import snake.Snake;
 
 public class MyKeyboard implements KeyboardHandler {
 
     private Keyboard keyboard;
     private Snake snake;
+    private Game game;
+
+
 
     public void setSnake(Snake snake) {
         this.snake = snake;
@@ -47,21 +50,29 @@ public class MyKeyboard implements KeyboardHandler {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) {
             snake.moveRight();
+            game.checkCollisionWithFruits();
+            game.deleteFruit();
             System.out.println("right");
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
             snake.moveLeft();
+            game.checkCollisionWithFruits();
+            game.deleteFruit();
             System.out.println("left");
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP) {
             snake.moveUp();
+            game.checkCollisionWithFruits();
+            game.deleteFruit();
             System.out.println("up");
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN) {
             snake.moveDown();
+            game.checkCollisionWithFruits();
+            game.deleteFruit();
             System.out.println("down");
         }
 
@@ -74,5 +85,7 @@ public class MyKeyboard implements KeyboardHandler {
 
     }
 
-
+    public void setGame(Game game) {
+        this.game = game;
+    }
 }
