@@ -15,10 +15,9 @@ public class Main {
         int initialPosCols = (field.getCols() * field.getCellSize()) / 2;
         int initialPosRows = (field.getRows() * field.getCellSize()) / 2;
 
-        Snake snake = new Snake(field, new Picture(initialPosCols,initialPosRows,"resources/snake.png"));
 
         MyKeyboard keyboard = new MyKeyboard();
-        keyboard.setSnake(snake);
+        keyboard.setSnake(new Snake(field));
         keyboard.init();
 
 
