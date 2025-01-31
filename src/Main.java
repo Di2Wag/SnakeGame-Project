@@ -12,11 +12,15 @@ public class Main {
         Field field = new Field(70,50);
         field.init();
 
-        Snake snake = new Snake(new Picture(10,10,"resources/snake.png"));
+        int initialPosCols = (field.getCols() * field.getCellSize()) / 2;
+        int initialPosRows = (field.getRows() * field.getCellSize()) / 2;
+
+        Snake snake = new Snake(field, new Picture(initialPosCols,initialPosRows,"resources/snake.png"));
 
         MyKeyboard keyboard = new MyKeyboard();
         keyboard.setSnake(snake);
         keyboard.init();
+
 
 
         /*Game game;
