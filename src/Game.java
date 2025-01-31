@@ -12,7 +12,7 @@ public class Game {
 
         Field field = new Field(70, 50);
 
-        snake = new Snake(snakePicture);
+        //snake = new Snake(snakePicture);
 
         field.init();
 

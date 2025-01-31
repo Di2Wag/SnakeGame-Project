@@ -12,6 +12,8 @@ public class Field {
     private int cols;
     private int rows;
 
+    Field field = this;
+
 
     public Field(int cols, int rows) {
         this.cols = cols;
@@ -23,8 +25,8 @@ public class Field {
         field.draw();
 
         //background
-        //Picture background = new Picture(PADDING,PADDING, "resources/Grass.jpg");
-        //Canvas.getInstance().show(background);
+        Picture background = new Picture(PADDING,PADDING, "resources/Grass 1050x750.png");
+        Canvas.getInstance().show(background);
 
     }
 
