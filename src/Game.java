@@ -15,6 +15,8 @@ public class Game {
         snake = new Snake(snakePicture);
 
         field.init();
+
+
     }
 
     public void setSnakePicture(Picture snakePicture) {

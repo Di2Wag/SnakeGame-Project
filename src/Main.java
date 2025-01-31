@@ -10,7 +10,7 @@ public class Main {
 
         Game game;
         game = new Game();
-        Picture picture = new Picture(0,0, "resources/Apple.png");
+        Picture picture = new Picture(10,10, "resources/Grass 1050x750.png");
 
         game.setSnakePicture(picture);
 
