@@ -8,15 +8,15 @@ import snake.Snake;
 public class Game {
 
     private Field field;
-    private  Snake snake;
+    private Snake snake;
     private Fruit[] fruits;
-    private  Fruit fruit;
+    private Fruit fruit;
 
 
-    public Game(Field field,Snake snake, Fruit fruit) {
-        this.field=field;
-        this.snake=snake;
-        this.fruit=fruit;
+    public Game(Field field, Snake snake) {
+        this.field = field;
+        this.snake = snake;
+        createFruits();
     }
 
     public void gameInit() {
@@ -31,8 +31,8 @@ public class Game {
 
     }
 
-    public void createFruits(){
-        fruits = new Fruit[20];
+    public void createFruits() {
+        fruits = new Fruit[1];
 
         for (int i = 0; i < fruits.length; i++) {
             fruits[i] = new Fruit(field);
@@ -40,22 +40,29 @@ public class Game {
 
     }
 
-    public  boolean checkCollisionWithFruits(){
-        if (snake.getRow() == fruit.getRow() && snake.getCol() == fruit.getCol()) {
-            return true;
+    public boolean checkCollisionWithFruits() {
+        for (Fruit f : fruits) {
+            if (snake.getRow() == f.getRow() && snake.getCol() == f.getCol()) {
+                fruit = f;
+                return true;
+            }
         }
-        return false;}
 
-    public void deleteFruit (){
-        if (checkCollisionWithFruits() == true) {
-            Picture fruitPic = fruit.getFruitPic();
-            fruitPic.delete();
-        }
+         return false;
     }
 
+    public void deleteFruit () {
+           for (int i = 0; i < fruits.length; i++) {
+               if (snake.getRow() == fruits[i].getRow() && snake.getCol() == fruits[i].getCol()) {
+                   fruit.getFruitPic().delete();
+                   fruits[i] = new Fruit(field);
 
+               }
 
+           }
 
     }
+
+}
 
 

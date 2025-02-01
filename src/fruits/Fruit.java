@@ -6,15 +6,17 @@ import field.Field;
 public class Fruit {
 
     private Picture fruitPic;
+    private FruitType fruitType;
     private int col;
     private int row;
     private Field field;
 
     public Fruit(Field field){
         this.field = field;
+        this.fruitType = FruitType.getFruitType();
         this.col=(int)(Math.random()*field.getCols());
         this.row=(int)(Math.random()*field.getRows());
-        this.fruitPic = new Picture(field.columnToX(col),field.rowToY(row),"resources/berry.png");
+        this.fruitPic = new Picture(field.columnToX(col),field.rowToY(row), fruitType.getImagePath());
         fruitPic.draw();
     }
 

@@ -23,9 +23,8 @@ public class Main {
         keyboard.setSnake(snake);
         keyboard.init();
 
-        Fruit fruit =new Fruit(field);
 
-        Game game =new Game(field, snake, fruit);
+        Game game =new Game(field, snake);
         keyboard.setGame(game);
 
 
