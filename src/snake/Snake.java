@@ -8,7 +8,7 @@ public class Snake {
 
     private Picture snakePicture;
     private Field field;
-    private int cellSize = 15;
+    private int cellSize = 24;
 
     private int col;
     private int row;
@@ -19,7 +19,7 @@ public class Snake {
         this.field = field;
         this.col=(int)(Math.random()*field.getCols());
         this.row=(int)(Math.random()*field.getRows());
-        this.snakePicture = new Picture(field.columnToX(col),field.rowToY(row),"resources/snake.png");
+        this.snakePicture = new Picture(field.columnToX(col),field.rowToY(row),"resources/snake (1).png");
         snakePicture.draw();
     }
 

@@ -2,10 +2,12 @@ package fruits;
 
 
 public enum FruitType {
-        BERRY("resources/berry.png"),
-        ORANGE("resources/orange.png"),
-        PINEAPPLE("resources/pineapple.png"),
-        STRAWBERRY("resources/strawberry.png");
+        BERRY("resources/cherry (1).png"),
+        ORANGE("resources/orange (1).png"),
+        PINEAPPLE("resources/pineapple (1).png"),
+        WATERMELON("resources/watermelon.png"),
+        BLUEBERRY("resources/blueberry.png"),
+        STRAWBERRY("resources/strawberry (1).png");
 
         private String imagePath;
 
@@ -19,7 +21,7 @@ public enum FruitType {
         }
 
         public static FruitType getFruitType() {
-                int value = (int) (Math.random() * 4);
+                int value = (int) (Math.random() *6);
 
                 switch (value) {
                         case 0:
@@ -33,6 +35,12 @@ public enum FruitType {
 
                         case 3:
                                 return STRAWBERRY;
+
+                        case 4:
+                                return BLUEBERRY;
+
+                        case 5:
+                                return WATERMELON;
 
                         default:
                                 System.out.println("Invalid FruitType");

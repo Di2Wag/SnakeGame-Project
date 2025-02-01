@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Field field = new Field(70,50);
+        Field field = new Field(60,40);
         field.init();
 
         int initialPosCols = (field.getCols() * field.getCellSize()) / 2;
@@ -32,7 +32,7 @@ public class Main {
 
         /*game.Game game;
         game = new game.Game();
-        Picture picture = new Picture(10,10, "resources/Grass 1050x750.png");
+        Picture picture = new Picture(10,10, "resources/.png");
         picture.draw();
 
         game.setSnakePicture(picture);

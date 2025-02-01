@@ -8,7 +8,7 @@ import com.codeforall.online.simplegraphics.pictures.Picture;
 public class Field {
 
     public static final int PADDING = 10;
-    private int cellSize = 15;
+    private int cellSize = 24;
     private int cols;
     private int rows;
 
@@ -25,7 +25,7 @@ public class Field {
         field.draw();
 
         //background
-        Picture background = new Picture(PADDING,PADDING, "resources/Dirt 1050x750(1).png");
+        Picture background = new Picture(PADDING,PADDING, "resources/Sand 1440x960.png");
         Canvas.getInstance().show(background);
 
     }
