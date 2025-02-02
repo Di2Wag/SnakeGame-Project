@@ -1,24 +1,19 @@
 package snake;
 
-import com.codeforall.online.simplegraphics.graphics.Color;
-import com.codeforall.online.simplegraphics.graphics.Rectangle;
-import com.codeforall.online.simplegraphics.keyboard.KeyboardEvent;
 import com.codeforall.online.simplegraphics.pictures.Picture;
 import field.Field;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class Snake {
 
-    private Picture snakePicture;
+    //private Picture snakePicture;
+    private List<Picture> snakeBody;
     private Field field;
     private int cellSize = 24;
-    private int gameUnits;
-    private int bodyXCord[];
-    private int bodyYCord[];
-    private int bodyParts = 0;
-    private Rectangle body[];
-    private int xToSpawn;
-    private int yToSpawn;
 
     private int col;
     private int row;
@@ -29,56 +24,54 @@ public class Snake {
         this.field = field;
         this.col=(int)(Math.random()*field.getCols());
         this.row=(int)(Math.random()*field.getRows());
-        gameUnits = (field.getCols()* field.getRows()) / cellSize;
-        bodyXCord = new int [gameUnits];
-        bodyYCord = new int [gameUnits];
-        body = new Rectangle[gameUnits];
-        bodyXCord[0] = col;
-        bodyYCord[0] = row;
-        this.snakePicture = new Picture(field.columnToX(col),field.rowToY(row),"resources/snake (1).png");
-        snakePicture.draw();
+
+        snakeBody = new LinkedList<>();
+        Picture snakeHead = new Picture(field.columnToX(col),field.rowToY(row),"resources/snake (1).png");
+        snakeBody.add(snakeHead);
+        snakeHead.draw();
+
+        //this.snakePicture = new Picture(field.columnToX(col),field.rowToY(row),"resources/snake (1).png");
+        //snakePicture.draw();
+    }
+
+    public void move(int colMovement, int rowMovement){
+        int newCol = col + colMovement;
+        int newRow = row + rowMovement;
+
+        if(newCol >= 0 && newCol < field.getCols() && newRow >= 0 && newRow < field.getRows()) {
+            col = newCol;
+            row = newRow;
+
+            for (int i = snakeBody.size() - 1; i > 0; i--) {
+                Picture prevBodySegment = snakeBody.get(i-1);
+                snakeBody.get(i).translate(prevBodySegment.getX() - snakeBody.get(i).getX(), prevBodySegment.getY()-snakeBody.get(i).getY());
+            }
+
+            snakeBody.get(0).translate(colMovement*cellSize, rowMovement*cellSize);
+        }
     }
 
     public void moveRight() {
-        System.out.println(field.getCols());
-        System.out.println(col);
-
-        if (col+1 < field.getCols()) {
-            col++;
-            snakePicture.translate(cellSize, 0);
-            bodyXCord[0] = col;
-            repaintBody();
-        }
-
+        move(1,0);
     }
 
     public void moveLeft(){
-        if(col-1>=0){
-            col--;
-            snakePicture.translate(-cellSize,0);
-            bodyXCord[0] = col;
-            repaintBody();
-        }
+        move(-1,0);
     }
 
     public void moveDown(){
-        System.out.println("row: " + row);
-        System.out.println("field rows:" + field.getRows());
-        if(row+1 < field.getRows()){
-            row++;
-            snakePicture.translate(0,cellSize);
-            bodyYCord[0] = row;
-            repaintBody();
-        }
+        move(0,1);
     }
 
     public void moveUp() {
-        if(row-1>=0){
-            row--;
-            snakePicture.translate(0,-cellSize);
-            bodyYCord[0] = row;
-            repaintBody();
-        }
+        move(0,-1);
+    }
+
+    public void growSnake(){
+        Picture snakeTail = snakeBody.get(snakeBody.size()-1);
+        Picture snakeBodySegment = new Picture(snakeTail.getX(),snakeTail.getY(),"resources/shape.png");
+        snakeBody.add(snakeBodySegment);
+        snakeBodySegment.draw();
     }
 
     public int getCol() {
@@ -95,45 +88,6 @@ public class Snake {
 
     public void setRow(int row) {
         this.row = row;
-    }
-
-    public void growSnake(int direction) {
-
-        bodyParts++;
-
-        if(direction == KeyboardEvent.KEY_UP){
-            xToSpawn = field.columnToX(col);
-            yToSpawn = field.rowToY(row)+cellSize*bodyParts;
-        }
-        if(direction == KeyboardEvent.KEY_DOWN){
-            xToSpawn = field.columnToX(col);
-            yToSpawn = field.rowToY(row)-cellSize*bodyParts;
-        }
-        if(direction == KeyboardEvent.KEY_LEFT){
-            xToSpawn = field.columnToX(col)+cellSize*bodyParts;
-            yToSpawn = field.rowToY(row);
-        }
-        if(direction == KeyboardEvent.KEY_RIGHT){
-            xToSpawn = field.columnToX(col)-cellSize*bodyParts;
-            yToSpawn = field.rowToY(row);
-        }
-
-        body[bodyParts] = new Rectangle(xToSpawn, yToSpawn, field.getCellSize(), field.getCellSize());
-        body[bodyParts].fill();
-        body[bodyParts].setColor(Color.GREEN);
-        bodyXCord[bodyParts] = field.columnToX(col);
-        bodyYCord[bodyParts] = field.rowToY(row);
-
-    }
-
-    public void repaintBody(){
-
-        for(int i=1; i<=bodyParts; i++){
-            body[i].delete();
-            body[i] = new Rectangle(bodyXCord[i-1]*cellSize, bodyYCord[i-1]*cellSize, cellSize, cellSize);
-            body[i].fill();
-            body[i].setColor(Color.GREEN);
-        }
     }
 }
 
