@@ -1,9 +1,13 @@
 package game;
 
+import com.codeforall.online.simplegraphics.graphics.Color;
+import com.codeforall.online.simplegraphics.graphics.Rectangle;
 import com.codeforall.online.simplegraphics.pictures.Picture;
 import field.Field;
 import fruits.Fruit;
 import snake.Snake;
+
+import java.awt.*;
 
 public class Game {
 
@@ -11,24 +15,14 @@ public class Game {
     private Snake snake;
     private Fruit[] fruits;
     private Fruit fruit;
+    int snakeBodyParts = 1;
+    int fruitsEaten = 0;
 
 
     public Game(Field field, Snake snake) {
         this.field = field;
         this.snake = snake;
         createFruits();
-    }
-
-    public void gameInit() {
-
-        //Field field = new Field(70, 50);
-
-        //snake = new Snake(snakePicture);
-
-        //field.init();
-
-        createFruits();
-
     }
 
     public void createFruits() {
@@ -62,7 +56,6 @@ public class Game {
            }
 
     }
-
 }
 
 

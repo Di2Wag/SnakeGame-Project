@@ -50,28 +50,36 @@ public class MyKeyboard implements KeyboardHandler {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) {
             snake.moveRight();
-            game.checkCollisionWithFruits();
+            if(game.checkCollisionWithFruits()){
+                snake.growSnake(keyboardEvent.getKey());
+            };
             game.deleteFruit();
             System.out.println("right");
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
             snake.moveLeft();
-            game.checkCollisionWithFruits();
+            if(game.checkCollisionWithFruits()){
+                snake.growSnake(keyboardEvent.getKey());
+            };
             game.deleteFruit();
             System.out.println("left");
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP) {
             snake.moveUp();
-            game.checkCollisionWithFruits();
+            if(game.checkCollisionWithFruits()){
+                snake.growSnake(keyboardEvent.getKey());
+            };
             game.deleteFruit();
             System.out.println("up");
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN) {
             snake.moveDown();
-            game.checkCollisionWithFruits();
+            if(game.checkCollisionWithFruits()){
+                snake.growSnake(keyboardEvent.getKey());
+            };
             game.deleteFruit();
             System.out.println("down");
         }

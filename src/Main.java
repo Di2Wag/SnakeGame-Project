@@ -5,8 +5,7 @@ import game.Game;
 import input.MyKeyboard;
 import snake.Snake;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
 
     public static void main(String[] args) {
@@ -27,21 +26,7 @@ public class Main {
         Game game =new Game(field, snake);
         keyboard.setGame(game);
 
-
-
-
-        /*game.Game game;
-        game = new game.Game();
-        Picture picture = new Picture(10,10, "resources/.png");
-        picture.draw();
-
-        game.setSnakePicture(picture);
-
-        game.gameInit();
-
-
-    }*/
-
-
     }
+
+
 }
