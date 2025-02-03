@@ -4,6 +4,7 @@ import com.codeforall.online.simplegraphics.keyboard.Keyboard;
 import com.codeforall.online.simplegraphics.keyboard.KeyboardEvent;
 import com.codeforall.online.simplegraphics.keyboard.KeyboardEventType;
 import com.codeforall.online.simplegraphics.keyboard.KeyboardHandler;
+import game.Direction;
 import game.Game;
 import snake.Snake;
 
@@ -49,37 +50,21 @@ public class MyKeyboard implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) {
-            snake.moveRight();
-            eatingFruitAndGrowing();
-            System.out.println("right");
+            game.setDirection(Direction.RIGHT);
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
-            snake.moveLeft();
-            eatingFruitAndGrowing();
-            System.out.println("left");
+            game.setDirection(Direction.LEFT);
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP) {
-            snake.moveUp();
-            eatingFruitAndGrowing();
-            System.out.println("up");
+            game.setDirection(Direction.UP);
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN) {
-            snake.moveDown();
-            eatingFruitAndGrowing();
-            System.out.println("down");
+            game.setDirection(Direction.DOWN);
         }
 
-
-    }
-
-    private void eatingFruitAndGrowing(){
-        if(game.checkCollisionWithFruits()){
-            snake.growSnake();
-            game.deleteFruit();
-        }
     }
 
 
