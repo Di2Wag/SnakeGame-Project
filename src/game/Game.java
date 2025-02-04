@@ -1,6 +1,7 @@
 package game;
 
 import com.codeforall.online.simplegraphics.graphics.Text;
+import com.codeforall.online.simplegraphics.pictures.Picture;
 import field.Field;
 import fruits.Fruit;
 import snake.Snake;
@@ -13,9 +14,10 @@ public class Game {
     private Fruit[] fruits;
     private Fruit fruit;
     private Direction direction;
-    private int threadSleepUnits = 300;
+    private int threadSleepUnits = 200;
     private int score = 0;
     private Text scoreDisplay;
+    private int scoreToReach = 10;
 
     public Game(Field field, Snake snake) {
         scoreDisplay = new Text(10,10,"Score: " + score);
@@ -52,7 +54,7 @@ public class Game {
 
                if (snake.getRow() == fruits[i].getRow() && snake.getCol() == fruits[i].getCol()) {
                    fruit.getFruitPic().delete();
-                   updateScore();
+                   updateScore(fruit.getFruitScore());
                    fruits[i] = new Fruit(field);
                }
 
@@ -60,9 +62,9 @@ public class Game {
 
     }
 
-    private void updateScore(){
+    private void updateScore(int scoreToAdd){
         System.out.println("updates core");
-        score += 10;
+        score += scoreToAdd;
         System.out.println(score);
         scoreDisplay.setText("Score: " + score);
         updateSpeed();
@@ -70,8 +72,12 @@ public class Game {
 
     private void updateSpeed(){
 
-        if(score > 10) {
-            threadSleepUnits = 100;
+        if(score > scoreToReach) {
+            scoreToReach = scoreToReach*2;
+            if(threadSleepUnits > 50) {
+                threadSleepUnits = threadSleepUnits-50;
+                System.out.println("thread: "+threadSleepUnits);
+            }
         }
 
     }
@@ -85,6 +91,9 @@ public class Game {
             moveInDirection();
 
         }
+
+        Picture gameOverPic = new Picture(400,175,"resources/GameOver.png");
+        gameOverPic.draw();
 
     }
 

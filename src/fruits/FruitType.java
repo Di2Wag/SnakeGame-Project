@@ -2,17 +2,19 @@ package fruits;
 
 
 public enum FruitType {
-        BERRY("resources/cherry (1).png"),
-        ORANGE("resources/orange (1).png"),
-        PINEAPPLE("resources/pineapple (1).png"),
-        WATERMELON("resources/watermelon.png"),
-        BLUEBERRY("resources/blueberry.png"),
-        STRAWBERRY("resources/strawberry (1).png");
+        BERRY("resources/cherry (1).png", 15),
+        ORANGE("resources/orange (1).png", 10),
+        PINEAPPLE("resources/pineapple (1).png", 10),
+        WATERMELON("resources/watermelon.png", 0),
+        BLUEBERRY("resources/blueberry.png", 15),
+        STRAWBERRY("resources/strawberry (1).png", 20);
 
         private String imagePath;
+        private int fruitScore;
 
-        FruitType(String imagePath) {
+        FruitType(String imagePath, int fruitScore) {
                 this.imagePath = imagePath;
+                this.fruitScore = fruitScore;
 
         }
 
@@ -48,6 +50,10 @@ public enum FruitType {
                 }
 
                 return null;
+        }
+
+        public int getFruitScore() {
+                return fruitScore;
         }
 
 }

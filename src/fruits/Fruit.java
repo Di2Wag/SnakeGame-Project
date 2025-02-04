@@ -10,6 +10,7 @@ public class Fruit {
     private int col;
     private int row;
     private Field field;
+    private int fruitScore;
 
     public Fruit(Field field){
         this.field = field;
@@ -18,6 +19,7 @@ public class Fruit {
         this.row=(int)(Math.random()*field.getRows());
         this.fruitPic = new Picture(field.columnToX(col),field.rowToY(row), fruitType.getImagePath());
         fruitPic.draw();
+        fruitScore = fruitType.getFruitScore();
     }
 
     public int getCol() {
@@ -42,5 +44,9 @@ public class Fruit {
 
     public void setFruitPic(Picture fruitPic) {
         this.fruitPic = fruitPic;
+    }
+
+    public int getFruitScore(){
+        return fruitScore;
     }
 }
