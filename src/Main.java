@@ -1,14 +1,15 @@
-import com.codeforall.online.simplegraphics.pictures.Picture;
+
 import field.Field;
-import fruits.Fruit;
 import game.Game;
 import input.MyKeyboard;
 import snake.Snake;
 
+import java.io.IOException;
+
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
 
         Field field = new Field(60,40);
         field.init();
@@ -18,7 +19,7 @@ public class Main {
         keyboard.setSnake(snake);
         keyboard.init();
 
-        Game game =new Game(field, snake);
+        Game game = new Game(field, snake);
         keyboard.setGame(game);
 
         game.start();

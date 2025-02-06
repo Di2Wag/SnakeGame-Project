@@ -18,16 +18,15 @@ public class Snake {
 
     private int col;
     private int row;
-
-
+    private String headDirectionPath = "resources/snake (1).png";
 
     public Snake(Field field) {
         this.field = field;
-        this.col=(int)(Math.random()*field.getCols());
-        this.row=(int)(Math.random()*field.getRows());
+        this.col=field.getCols()/2;
+        this.row=field.getRows()/2;
 
         snakeBody = new LinkedList<>();
-        Picture snakeHead = new Picture(field.columnToX(col),field.rowToY(row),"resources/snake (1).png");
+        Picture snakeHead = new Picture(field.columnToX(col),field.rowToY(row),headDirectionPath);
         snakeBody.add(snakeHead);
         snakeHead.draw();
         System.out.println(snakeBody.get(0).toString());
@@ -102,6 +101,14 @@ public class Snake {
 
     public boolean isCrashed() {
         return crashed;
+    }
+
+    public void redrawHead(String headDirectionPath){
+        this.headDirectionPath = headDirectionPath;
+        Picture snakeHead = new Picture(snakeBody.get(0).getX(), snakeBody.get(0).getY(), headDirectionPath);
+        snakeBody.get(0).delete();
+        snakeBody.set(0, snakeHead);
+        snakeHead.draw();
     }
 }
 

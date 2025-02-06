@@ -6,6 +6,8 @@ import field.Field;
 import fruits.Fruit;
 import snake.Snake;
 
+import java.io.IOException;
+
 
 public class Game {
 
@@ -17,16 +19,25 @@ public class Game {
     private int threadSleepUnits = 200;
     private int score = 0;
     private Text scoreDisplay;
+    private Text highScoreDisplay;
     private int scoreToReach = 10;
+    private String headDirectionPath;
+    private int highestScore;
+    private MyHighScore highScore;
+
 
     public Game(Field field, Snake snake) {
-        scoreDisplay = new Text(10,10,"Score: " + score);
+        scoreDisplay = new Text(10,30,"Score: " + score);
         scoreDisplay.draw();
-
-        direction = Direction.values()[(int)(Math.random()*Direction.values().length)];
+        direction = Direction.DOWN;
         this.field = field;
         this.snake = snake;
         createFruits();
+        highScore = new MyHighScore();
+        highestScore = highScore.loadHighScore();
+        highScoreDisplay = new Text(10,10,"High Score: " + highestScore);
+        highScoreDisplay.draw();
+
     }
 
     public void createFruits() {
@@ -82,7 +93,7 @@ public class Game {
 
     }
 
-    public void start() throws InterruptedException {
+    public void start() throws InterruptedException, IOException {
 
         while (!snake.isCrashed()){
 
@@ -90,6 +101,11 @@ public class Game {
 
             moveInDirection();
 
+        }
+
+
+        if(score > highestScore) {
+            highScore.saveHighScore(score);
         }
 
         Picture gameOverPic = new Picture(400,175,"resources/GameOver.png");
@@ -113,6 +129,7 @@ public class Game {
             case LEFT:
                 snake.moveLeft();
                 break;
+
         }
 
         eatingFruitAndGrowing();
@@ -128,7 +145,32 @@ public class Game {
 
     public void setDirection(Direction direction){
         this.direction = direction;
+        setHeadDirectionPath();
+        snake.redrawHead(headDirectionPath);
     }
+
+    private void setHeadDirectionPath(){
+        switch (direction){
+
+            case UP:
+                headDirectionPath = "resources/snake (3).png";
+                break;
+
+            case DOWN:
+                headDirectionPath = "resources/snake (1).png";
+                break;
+
+            case RIGHT:
+                headDirectionPath = "resources/snake (2).png";
+                break;
+
+            case LEFT:
+                headDirectionPath = "resources/snake (4).png";
+                break;
+        }
+
+    }
+
 
 }
 
