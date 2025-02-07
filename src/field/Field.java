@@ -7,7 +7,10 @@ import com.codeforall.online.simplegraphics.pictures.Picture;
 
 public class Field {
 
-    public static final int PADDING = 10;
+    public static final int PADDING_TOP = 68;
+    public static final int PADDING_BOTTOM = 10;
+    public static final int PADDING_LEFT = 10;
+    public static final int PADDING_RIGHT = 10;
     private int cellSize = 24;
     private int cols;
     private int rows;
@@ -21,12 +24,16 @@ public class Field {
     }
 
     public void init() {
-        Rectangle field = new Rectangle((double)10.0F, (double)10.0F, (double)(this.cols * this.cellSize), (double)(this.rows * this.cellSize));
+        Rectangle field = new Rectangle((double)PADDING_LEFT, (double)PADDING_TOP, (double)(this.cols * this.cellSize), (double)(this.rows * this.cellSize));
         field.draw();
 
         //background
-        Picture background = new Picture(PADDING,PADDING, "resources/Sand 1440x960.png");
+        Picture background = new Picture(PADDING_LEFT,PADDING_TOP, "resources/sand 1440x912.png");
         Canvas.getInstance().show(background);
+
+        //banner
+        Picture banner = new Picture(PADDING_LEFT,0,"resources/Snake Banner-01.png");
+        Canvas.getInstance().show(banner);
 
     }
 
@@ -43,15 +50,15 @@ public class Field {
     }
 
     public int rowToY(int row) {
-        return 10 + this.cellSize * row;
+        return PADDING_TOP + this.cellSize * row;
     }
 
     public int columnToX(int column) {
-        return 10 + this.cellSize * column;
+        return PADDING_LEFT + this.cellSize * column;
     }
 
-    public int getPadding() {
+    /*public int getPadding() {
         return PADDING;
-    }
+    }*/
 
 }

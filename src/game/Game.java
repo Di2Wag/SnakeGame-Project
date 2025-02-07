@@ -27,7 +27,7 @@ public class Game {
 
 
     public Game(Field field, Snake snake) {
-        scoreDisplay = new Text(10,30,"Score: " + score);
+        scoreDisplay = new Text(130,30,"" + score);
         scoreDisplay.draw();
         direction = Direction.DOWN;
         this.field = field;
@@ -35,7 +35,7 @@ public class Game {
         createFruits();
         highScore = new MyHighScore();
         highestScore = highScore.loadHighScore();
-        highScoreDisplay = new Text(10,10,"High Score: " + highestScore);
+        highScoreDisplay = new Text(1400,30,"" + highestScore);
         highScoreDisplay.draw();
 
     }
@@ -77,7 +77,7 @@ public class Game {
         System.out.println("updates core");
         score += scoreToAdd;
         System.out.println(score);
-        scoreDisplay.setText("Score: " + score);
+        scoreDisplay.setText("" + score);
         updateSpeed();
     }
 
@@ -100,6 +100,7 @@ public class Game {
             Thread.sleep(threadSleepUnits);
 
             moveInDirection();
+            eatingFruitAndGrowing();
 
         }
 
@@ -132,7 +133,7 @@ public class Game {
 
         }
 
-        eatingFruitAndGrowing();
+
 
     }
 

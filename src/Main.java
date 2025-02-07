@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException, IOException {
 
-        Field field = new Field(60,40);
+        Field field = new Field(60,38);
         field.init();
 
         MyKeyboard keyboard = new MyKeyboard();
