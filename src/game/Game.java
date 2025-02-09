@@ -17,6 +17,7 @@ public class Game {
     private Fruit fruit;
     private Direction direction;
     private int threadSleepUnits = 200;
+    private final int INITIAL_THREAD_SLEEP_UNITS = 200;
     private int score = 0;
     private Text scoreDisplay;
     private Text highScoreDisplay;
@@ -105,6 +106,7 @@ public class Game {
             Thread.sleep(threadSleepUnits);
             moveInDirection();
             eatingFruitAndGrowing();
+            updateSpeed();
         }
 
 
@@ -144,6 +146,8 @@ public class Game {
         snake = new Snake(field);
         createFruits();
         scoreDisplay.setText("" + score);
+        threadSleepUnits = INITIAL_THREAD_SLEEP_UNITS;
+        scoreToReach = 10;
         start();
     }
 
