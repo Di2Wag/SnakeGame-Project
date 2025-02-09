@@ -8,6 +8,8 @@ import game.Direction;
 import game.Game;
 import snake.Snake;
 
+import java.io.IOException;
+
 public class MyKeyboard implements KeyboardHandler {
 
     private Keyboard keyboard;
@@ -68,6 +70,11 @@ public class MyKeyboard implements KeyboardHandler {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN) {
             game.setDirection(Direction.DOWN);
+        }
+
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_R) {
+            game.setGameIsRunning(true);
+
         }
 
     }

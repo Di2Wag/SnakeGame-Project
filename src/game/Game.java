@@ -24,6 +24,7 @@ public class Game {
     private String headDirectionPath;
     private int highestScore;
     private MyHighScore highScore;
+    private boolean gameIsRunning = true;
 
 
     public Game(Field field, Snake snake) {
@@ -95,14 +96,26 @@ public class Game {
 
     public void start() throws InterruptedException, IOException {
 
-        while (!snake.isCrashed()){
+        while (gameIsRunning) {
+            if (snake.isCrashed()){
+                gameIsRunning = false;
+                break;
+            }
+
+            Thread.sleep(threadSleepUnits);
+            moveInDirection();
+            eatingFruitAndGrowing();
+        }
+
+
+        /*while (!snake.isCrashed()){
 
             Thread.sleep(threadSleepUnits);
 
             moveInDirection();
             eatingFruitAndGrowing();
 
-        }
+        }*/
 
 
         if(score > highestScore) {
@@ -114,6 +127,24 @@ public class Game {
         Picture restartGamePic = new Picture(250,700,"resources/RestartTransp.png");
         restartGamePic.draw();
 
+        pressRToRestart();
+
+    }
+
+    private void pressRToRestart() throws InterruptedException, IOException {
+        while (!gameIsRunning) {
+            Thread.sleep(100);
+        }
+        restartGame();
+    }
+
+    private void restartGame() throws IOException, InterruptedException {
+        score = 0;
+        field.init();
+        snake = new Snake(field);
+        createFruits();
+        scoreDisplay.setText("" + score);
+        start();
     }
 
     private void moveInDirection(){
@@ -172,6 +203,10 @@ public class Game {
                 break;
         }
 
+    }
+
+    public void setGameIsRunning(boolean gameIsRunning) {
+        this.gameIsRunning = gameIsRunning;
     }
 
 
