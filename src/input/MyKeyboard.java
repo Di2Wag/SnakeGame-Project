@@ -40,10 +40,15 @@ public class MyKeyboard implements KeyboardHandler {
         down.setKey(KeyboardEvent.KEY_DOWN);
         down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
+        KeyboardEvent restart = new KeyboardEvent();
+        restart.setKey(KeyboardEvent.KEY_R);
+        restart.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
         keyboard.addEventListener(right);
         keyboard.addEventListener(left);
         keyboard.addEventListener(up);
         keyboard.addEventListener(down);
+        keyboard.addEventListener(restart);
     }
 
     @Override

@@ -109,8 +109,10 @@ public class Game {
             highScore.saveHighScore(score);
         }
 
-        Picture gameOverPic = new Picture(400,175,"resources/GameOver.png");
+        Picture gameOverPic = new Picture(500,175,"resources/game-over(1).png");
         gameOverPic.draw();
+        Picture restartGamePic = new Picture(250,700,"resources/RestartTransp.png");
+        restartGamePic.draw();
 
     }
 
