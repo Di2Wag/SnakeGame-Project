@@ -2,7 +2,7 @@
 
 Classic snake game developed as a part of a fullstack programming course.
 
-![Snake Game screenshot](resources/Screenshot.png "A screenshot of the Snake Game in action")
+<img src="resources/Screenshot.png" alt="Game Screenshot" width="500">
 
 ## Languages and technologies
 
